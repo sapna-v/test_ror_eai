@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Channels</h1>
+
+<table>
+  <thead>
+    <%= form_tag(search_page_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+      <div class="input-group">  
+        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>   
+      </div>  
+    <% end %>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @channels.each do |channel| %>
+      <tr>
+        <td><%= channel.name %></td>
+        <td><%= link_to 'Show', channel %></td>
+        <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
+        <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Channel', new_channel_path %>
+<br>
+<%= link_to 'New Show', new_show_path %>
+<br>
+<%= link_to 'All Shows', shows_path %>
+<br>
+<%= link_to 'All Users', users_path %>
+
